@@ -5,8 +5,16 @@
     { "src": "admin/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
   ],
   "routes": [
+    { "src": "/admin/assets/(.*)", "dest": "/admin/dist/assets/$1" },
+    { "src": "/admin/vite.svg", "dest": "/admin/dist/vite.svg" },
     { "src": "/admin$", "dest": "/admin/dist/index.html" },
     { "src": "/admin/(.*)", "dest": "/admin/dist/$1" },
-    { "src": "/(.*)", "dest": "/frontend/dist/$1" }
+
+    { "src": "/assets/(.*)", "dest": "/frontend/dist/assets/$1" },
+    { "src": "/vite.svg", "dest": "/frontend/dist/vite.svg" },
+    { "src": "/header_img.png", "dest": "/frontend/dist/header_img.png" },
+
+    { "src": "^/$", "dest": "/frontend/dist/index.html" },
+    { "src": "/(.*)", "dest": "/frontend/dist/index.html" }
   ]
 }
